@@ -1,3 +1,17 @@
+# Prerequisites
+
+## Installation
+
+Install (older version of) Fabric docker images.
+
+```
+curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.0 1.4.0 0.4.15 -s -b
+```
+
+## Configuration
+
+From https://medium.com/@kctheservant/an-implementation-example-of-notarization-in-hyperledger-fabric-e66fab155fdb :
+
 Besides Fabric SDK, we also needs handling X509 certificate and cryptography.
 
 #### inside docrec
@@ -36,6 +50,19 @@ Use registerUser.js to enrol users alice and bob. If they are already in the doc
 
 ```
 $ node registerUser.js alice
-$ node registerUser.js bob
 $ ls wallet
 ```
+
+# API
+
+## installation
+
+#### inside docrec
+
+`npm install`
+
+## direct run
+
+`npm start`
+
+## docker
