@@ -77,6 +77,14 @@ async function add(user, content) {
 
 }
 
+/**
+ * @api {get} /doc/add Store non-repudable content
+ * @apiName NR
+ * @apiGroup Store
+ *
+ * @apiParam {body} NR payload.
+ *
+ */
 router.post('/add', function(req, res, next) {
 
   add("alice", req.body).then((result) => res.send(result));
@@ -164,6 +172,14 @@ async function validate(user, content, certfile) {
 
 }
 
+/**
+ * @api {get} /doc/validate Validate non-repudable content
+ * @apiName NR
+ * @apiGroup Validate
+ *
+ * @apiParam {body} NR payload.
+ *
+ */
 router.post('/validate', function(req, res, next) {
 
   console.log(req.body);
