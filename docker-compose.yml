@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+
+  webapp:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    network_mode: "host"
+    environment:
+      - NODE_EXTRA_CA_CERTS=nr.crt

@@ -1,0 +1,27 @@
+{
+  "name": "docrec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "crypto-js": "^3.1.9-1",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "fabric-ca-client": "^1.4.4",
+    "fabric-network": "^1.4.4",
+    "http-errors": "~1.6.2",
+    "jsrsasign": "^8.0.12",
+    "minio": "^7.0.12",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.19.4",
+    "pug": "2.0.0-beta11"
+  }
+}
