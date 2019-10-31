@@ -10,7 +10,6 @@ COPY chain/docrec /usr/src/chain/docrec
 WORKDIR /usr/src/api
 
 # Copy cert for accessing bucket. To be refed in compose.
-
 COPY ./bucket/certs/nr.crt nr.crt
 
 # Install app dependencies

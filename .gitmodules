@@ -1,0 +1,3 @@
+[submodule "selinux-nr"]
+	path = selinux-nr
+	url = git@github.kcl.ac.uk:big/selinux-nr.git

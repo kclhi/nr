@@ -4,7 +4,7 @@
 
 ## 1. Fabric
 
-### Installation
+### installation
 
 Install (older version of) Fabric docker images.
 
@@ -12,7 +12,7 @@ Install (older version of) Fabric docker images.
 $ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.0 1.4.0 0.4.15 -s -b
 ```
 
-### Configuration
+### setup and run chain
 
 From https://medium.com/@kctheservant/an-implementation-example-of-notarization-in-hyperledger-fabric-e66fab155fdb :
 
@@ -37,7 +37,11 @@ $ docker exec cli peer chaincode install -n docrec -v 1.0 -p "github.com/docrec"
 $ docker exec cli peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n docrec -v 1.0 -c '{"Args":[]}' -P "OR ('Org1MSP.member')"
 ```
 
-### non-docker
+### setup chain for NR (docker)
+
+Fabric NR setup happens alongside API setup.
+
+### setup chain for NR (non-docker)
 
 #### inside chain/docrec
 
@@ -60,33 +64,76 @@ $ node registerUser.js alice
 $ ls wallet
 ```
 
-### docker
+We later needs the certificate from alice for signature validation. The certificate can be found inside the wallet. The directory is docrec/wallet/alice/alice.
 
-Fabric setup happens alongside API setup.
+```
+$ cat wallet/alice/alice
+```
+
+Use any editor to extract it and keep them into a file: wallet/alicecert.
 
 ## 2. Bucket
+
+### configuration
+
+Generate certs.
 
 ```
 ./certs/gen-ca-cert.sh
 ./certs/gen-domain-cert.sh
 ```
 
-### non-docker
-
-Unavailable
-
-### docker
+### run (docker)
 
 ```
 docker-compose build
 docker-compose up -d
 ```
 
+### run (non-docker)
+
+Unavailable
+
+## 3. SELinux
+
+Create secure environemnt.
+
+Create policy
+
+```
+policy_module(nrfolder, 1.0)
+gen_require(`
+   type sysadm_t;
+')
+type nrfolder_t;
+fs_associate(nrfolder_t)
+allow sysadm_t nrfolder_t:{ dir file } relabelto;
+allow sysadm_t nrfolder_t:dir { ioctl read append create getattr setattr lock unlink link rename add_name remove_name reparent search rmdir open };
+allow sysadm_t nrfolder_t:file { ioctl read append create getattr setattr lock append unlink link rename open };             
+```
+
+Compile and install policy
+
+Create folder
+
+!! DO all this in the gitrepo and include as submodule
+!! Have a script ready to create everything like build script
+
+
+```
+setenforce 1
+setsebool secure_mode_policyload on
+```
+
 ## API
 
-### installation
+### installation (docker)
 
-### non-docker
+```
+$ docker-compose up
+```
+
+### installation (non-docker)
 
 #### inside api
 
@@ -106,12 +153,6 @@ Reference certs for SSL bucket use:
 
 ```
 export NODE_EXTRA_CA_CERTS=../bucket/certs/nr.crt
-```
-
-### docker
-
-```
-$ docker-compose up
 ```
 
 ### usage
