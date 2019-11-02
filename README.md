@@ -96,33 +96,29 @@ Unavailable
 
 ## 3. SELinux
 
-Create secure environemnt.
-
-Create policy
+Checkout submodule:
 
 ```
-policy_module(nrfolder, 1.0)
-gen_require(`
-   type sysadm_t;
-')
-type nrfolder_t;
-fs_associate(nrfolder_t)
-allow sysadm_t nrfolder_t:{ dir file } relabelto;
-allow sysadm_t nrfolder_t:dir { ioctl read append create getattr setattr lock unlink link rename add_name remove_name reparent search rmdir open };
-allow sysadm_t nrfolder_t:file { ioctl read append create getattr setattr lock append unlink link rename open };             
+git submodule init
+git submodule update
 ```
 
-Compile and install policy
-
-Create folder
-
-!! DO all this in the gitrepo and include as submodule
-!! Have a script ready to create everything like build script
-
+Startup Vagrant machine
 
 ```
-setenforce 1
-setsebool secure_mode_policyload on
+cd selinux/_vagrant
+vagrant up
+vagrant provision
+```
+
+NB. as of now, openssh-selinux can only be installed into the Vagrant VM with --no-check.
+
+Enable Selinux enforcement in VM:
+
+```
+vagrant ssh
+sudo setenforce 1
+sudo setsebool secure_mode_policyload on
 ```
 
 ## API

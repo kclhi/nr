@@ -7,6 +7,7 @@ var logger = require('morgan');
 
 var chainRouter = require('./routes/chain');
 var bucketRouter = require('./routes/bucket');
+var selinuxRouter = require('./routes/selinux');
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/chain', chainRouter);
 app.use('/bucket', bucketRouter);
+app.use('/selinux', selinuxRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
