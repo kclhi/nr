@@ -19,7 +19,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "api/routes/bucket.js",
+    "filename": "./api/routes/bucket.js",
     "groupTitle": "Store"
   },
   {
@@ -42,7 +42,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "api/routes/chain.js",
+    "filename": "./api/routes/chain.js",
     "groupTitle": "Store"
   },
   {
@@ -65,7 +65,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "api/routes/selinux.js",
+    "filename": "./api/routes/selinux.js",
     "groupTitle": "Store"
   },
   {
@@ -88,7 +88,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "api/routes/chain.js",
+    "filename": "./api/routes/chain.js",
     "groupTitle": "Validate"
   }
 ]
