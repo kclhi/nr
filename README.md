@@ -152,3 +152,5 @@ export NODE_EXTRA_CA_CERTS=../bucket/certs/nr.crt
 ```
 
 ### usage
+
+[docs](https://big-kcl.github.io/nr/)

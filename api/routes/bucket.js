@@ -50,7 +50,6 @@ router.post('/add', function(req, res, next) {
 
     } else {
 
-      // Make a bucket called europetrip.
       minioClient.makeBucket('nr-api', 'us-east-1', function(err) {
 
           if (err) return console.log(err)
