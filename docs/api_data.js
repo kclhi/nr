@@ -1,6 +1,6 @@
 define({ "api": [
   {
-    "type": "get",
+    "type": "post",
     "url": "/bucket/add",
     "title": "Store non-repudable content in an AWS S3-style bucket",
     "name": "NR",
@@ -23,7 +23,7 @@ define({ "api": [
     "groupTitle": "Store"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "/chain/add",
     "title": "Store non-repudable content",
     "name": "NR",
@@ -46,7 +46,7 @@ define({ "api": [
     "groupTitle": "Store"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "/selinux/add",
     "title": "Store non-repudable content in an selinux protected file",
     "name": "NR",

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /**
- * @api {get} /selinux/add Store non-repudable content in an selinux protected file
+ * @api {post} /selinux/add Store non-repudable content in an selinux protected file
  * @apiName NR
  * @apiGroup Store
  *

@@ -15,7 +15,7 @@ function addFileToBucket(minioClient, content) {
 
 }
 /**
- * @api {get} /bucket/add Store non-repudable content in an AWS S3-style bucket
+ * @api {post} /bucket/add Store non-repudable content in an AWS S3-style bucket
  * @apiName NR
  * @apiGroup Store
  *

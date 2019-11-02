@@ -78,7 +78,7 @@ async function add(user, content) {
 }
 
 /**
- * @api {get} /chain/add Store non-repudable content
+ * @api {post} /chain/add Store non-repudable content
  * @apiName NR
  * @apiGroup Store
  *
