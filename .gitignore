@@ -161,3 +161,5 @@ sample/
 *.crt
 *.csr
 *.srl
+
+!api/bin/

@@ -16,3 +16,5 @@ authorityKeyIdentifier = keyid,issuer
 subjectAltName = DNS:$domain
 END
     )
+
+cat nr.crt >> localhost.crt

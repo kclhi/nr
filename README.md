@@ -1,5 +1,7 @@
 # NR API front-end
 
+An API to enable the storage of non-repudiable data.
+
 ## Prerequisites: NR mechanisms
 
 ## 1. Fabric
@@ -74,23 +76,26 @@ Use any editor to extract it and keep them into a file: wallet/alicecert.
 
 ## 2. Bucket
 
-### configuration
+### inside bucket/certs
 
-Generate certs.
+#### configuration
+
+Generate certschain/basic-network
 
 ```
-./certs/gen-ca-cert.sh
-./certs/gen-domain-cert.sh
+./gen-ca-cert.sh
+./gen-domain-cert.sh
 ```
+### inside bucket
 
-### run (docker)
+#### run (docker)
 
 ```
 docker-compose build
 docker-compose up -d
 ```
 
-### run (non-docker)
+#### run (non-docker)
 
 Unavailable
 
@@ -107,11 +112,11 @@ Startup Vagrant machine
 
 ```
 cd selinux/_vagrant
-vagrant up
+vagrant up --no-provision
 vagrant provision
 ```
 
-NB. as of now, openssh-selinux can only be installed into the Vagrant VM with --no-check.
+NB. as of now, openssh-selinux can only be installed into the Vagrant VM with --nocheck.
 
 Enable Selinux enforcement in VM:
 
@@ -123,15 +128,17 @@ sudo setsebool secure_mode_policyload on
 
 ## API
 
-### installation (docker)
+### inside main repo
+
+#### installation (docker)
 
 ```
 $ docker-compose up
 ```
 
-### installation (non-docker)
+#### installation (non-docker)
 
-#### inside api
+##### inside api
 
 ```
 $ npm init -y
