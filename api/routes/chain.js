@@ -15,7 +15,7 @@ const ccp = JSON.parse(ccpJSON);
 const caCertPath = path.resolve(__dirname, '../../chain', 'basic-network', 'crypto-config', 'peerOrganizations', 'org1.example.com', 'ca', 'ca.org1.example.com-cert.pem');
 const caCert = fs.readFileSync(caCertPath, 'utf8');
 
-const WRONG_FORMAT_MESSAGE = "Format of supplied data not recognised, check content header type, e.g. 'Content-Type: text/plain'";
+const WRONG_FORMAT_MESSAGE = "Format of supplied data not recognised, expecting JSON body. Check body contents and content type header, e.g. 'Content-Type: application/json'";
 
 async function add(user, content) {
 
@@ -81,7 +81,7 @@ async function add(user, content) {
 
 function bodyFormatCheck(body) {
 
-  return body && typeof body === "string" && body.length;
+  return body && typeof body === "object" && body.constructor === Object && Object.entries(body).length;
 
 }
 
@@ -97,7 +97,7 @@ router.post('/add', function(req, res, next) {
 
   if ( bodyFormatCheck(req.body) ) {
 
-    add("alice", req.body).then((result) => res.send(result));
+    add("alice", JSON.stringify(req.body)).then((result) => res.send(result));
 
   } else {
 
@@ -200,7 +200,7 @@ router.post('/validate', function(req, res, next) {
 
   if ( bodyFormatCheck(req.body) ) {
 
-    validate("alice", req.body, "../chain/docrec/wallet/alicecert").then((result) => res.send(result));
+    validate("alice", JSON.stringify(req.body), "../chain/docrec/wallet/alicecert").then((result) => res.send(result));
 
   } else {
 
