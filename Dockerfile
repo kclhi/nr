@@ -6,6 +6,20 @@ COPY chain/basic-network /usr/src/chain/basic-network
 # Install Fabric NR dependency
 COPY chain/docrec /usr/src/chain/docrec
 
+WORKDIR /usr/src/chain/docrec
+
+# Install dependencies in docrec folder
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY api/package*.json ./
+
+RUN npm install
+
+RUN node enrollAdmin.js
+RUN node registerUser.js alice
+# Extract alice cert for validation
+RUN cat ./wallet/alice/alice | grep -Po '\-.*\-' | awk '{gsub(/\\n/,"\n")}1' >> ./wallet/alicecert
+
 # Create app directory
 WORKDIR /usr/src/api
 
@@ -13,8 +27,6 @@ WORKDIR /usr/src/api
 COPY ./bucket/certs/nr.crt nr.crt
 
 # Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
 COPY api/package*.json ./
 
 RUN npm install
@@ -23,9 +35,6 @@ RUN npm install
 # RUN npm ci --only=production
 
 COPY api .
-
-CMD [ "node", "../chain/docrec/enrollAdmin.js" ]
-CMD [ "node", "../chain/docrec/registerUser.js alice" ]
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
