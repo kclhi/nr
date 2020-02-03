@@ -15,6 +15,8 @@ const ccp = JSON.parse(ccpJSON);
 const caCertPath = path.resolve(__dirname, '../../chain', 'basic-network', 'crypto-config', 'peerOrganizations', 'org1.example.com', 'ca', 'ca.org1.example.com-cert.pem');
 const caCert = fs.readFileSync(caCertPath, 'utf8');
 
+const WRONG_FORMAT_MESSAGE = "Format of supplied data not recognised, check content header type, e.g. 'Content-Type: text/plain'";
+
 async function add(user, content) {
 
   try {
@@ -77,6 +79,12 @@ async function add(user, content) {
 
 }
 
+function bodyFormatCheck(body) {
+
+  return body && typeof body === "string" && body.length;
+
+}
+
 /**
  * @api {post} /chain/add Store non-repudable content
  * @apiName NR
@@ -87,7 +95,15 @@ async function add(user, content) {
  */
 router.post('/add', function(req, res, next) {
 
-  add("alice", req.body).then((result) => res.send(result));
+  if ( bodyFormatCheck(req.body) ) {
+
+    add("alice", req.body).then((result) => res.send(result));
+
+  } else {
+
+    return res.send(WRONG_FORMAT_MESSAGE);
+
+  }
 
 });
 
@@ -182,8 +198,15 @@ async function validate(user, content, certfile) {
  */
 router.post('/validate', function(req, res, next) {
 
-  console.log(req.body);
-  validate("alice", req.body, "../chain/docrec/wallet/alicecert").then((result) => res.send(result));
+  if ( bodyFormatCheck(req.body) ) {
+
+    validate("alice", req.body, "../chain/docrec/wallet/alicecert").then((result) => res.send(result));
+
+  } else {
+
+    return res.send(WRONG_FORMAT_MESSAGE);
+
+  }
 
 });
 
