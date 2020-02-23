@@ -86,6 +86,7 @@ Generate certschain/basic-network
 ./gen-ca-cert.sh
 ./gen-domain-cert.sh
 ```
+
 ### inside bucket
 
 #### run (docker)
@@ -122,8 +123,8 @@ Enable Selinux enforcement in VM:
 
 ```
 vagrant ssh
-sudo setenforce 1
 sudo setsebool secure_mode_policyload on
+sudo setenforce 1
 ```
 
 ## API
@@ -133,7 +134,7 @@ sudo setsebool secure_mode_policyload on
 #### installation (docker)
 
 ```
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 #### installation (non-docker)
