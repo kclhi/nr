@@ -20,8 +20,12 @@ services:
       timeout: 20s
       retries: 3
 
-
 ## By default this config uses default local driver,
 ## For custom volumes replace with volume driver configuration.
 volumes:
   data:
+
+networks:
+  default:
+    external:
+      name: net_basic

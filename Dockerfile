@@ -20,11 +20,17 @@ RUN node registerUser.js alice
 # Extract alice cert for validation
 RUN cat ./wallet/alice/alice | grep -Po '\-.*\-' | awk '{gsub(/\\n/,"\n")}1' >> ./wallet/alicecert
 
+VOLUME /usr/src/chain
+
 # Create app directory
 WORKDIR /usr/src/api
 
 # Copy cert for accessing bucket. To be refed in compose.
 COPY ./bucket/certs/nr.crt nr.crt
+
+# Copy keys for ssh access to selinux machine.
+COPY ./selinux/_vagrant/keys ../selinux/_vagrant/keys
+RUN chmod -R og-rwx ../selinux/_vagrant/keys
 
 # Install app dependencies
 COPY api/package*.json ./

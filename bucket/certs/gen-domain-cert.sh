@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 org=nr-ca
-domain=localhost
+domain=bucket_minio1_1
 
 openssl genpkey -algorithm RSA -out "$domain".key
 openssl req -new -key "$domain".key -out "$domain".csr \

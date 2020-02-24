@@ -2,12 +2,22 @@ version: "3.7"
 
 services:
 
-  webapp:
+  nr_api_webapp:
     build:
       context: .
-      network: host
-    ports:
-      - "3010:3010"
-    network_mode: "host"
+      network: net_basic
+    container_name: nr-api-webapp
     environment:
       - NODE_EXTRA_CA_CERTS=nr.crt
+    ports:
+      - "3010:3010"
+    volumes:
+      - chain_data:/usr/src/chain
+
+networks:
+  default:
+    external:
+      name: net_basic
+
+volumes:
+  chain_data:

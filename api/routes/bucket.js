@@ -5,7 +5,7 @@ var Minio = require('minio')
 function addFileToBucket(minioClient, content) {
 
   // Upload a string
-  minioClient.putObject('nr-api', "o" + Date.now(), content, 'text/plain', function(err, etag) {
+  minioClient.putObject('nr-api', "o" + Date.now(), JSON.stringify(content), "text/plain", function(err, etag) {
 
     if (err) return console.log(err)
 
@@ -28,8 +28,8 @@ router.post('/add', function(req, res, next) {
   // Instantiate the minio client with the endpoint
   // and access keys as shown below.
   var minioClient = new Minio.Client({
-      endPoint: 'localhost',
-      port: 9001,
+      endPoint: 'bucket_minio1_1',
+      port: 9000,
       useSSL: true,
       accessKey: 'minio',
       secretKey: 'minio123'

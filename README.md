@@ -109,10 +109,17 @@ git submodule init
 git submodule update
 ```
 
-Startup Vagrant machine
+Change into vagrant directory:
 
 ```
 cd selinux/_vagrant
+```
+
+Add relevant bridge details into selinux/\_vagrant/Vagrantfile.
+
+Startup Vagrant machine:
+
+```
 vagrant up --no-provision
 vagrant provision
 ```
@@ -127,11 +134,19 @@ sudo setsebool secure_mode_policyload on
 sudo setenforce 1
 ```
 
+Note IP address of specified bridge:
+
+```
+ifconfig
+```
+
 ## API
 
 ### inside main repo
 
 #### installation (docker)
+
+Add IP address of vagrant machine to `api/routes/selinux.js`.
 
 ```
 $ docker-compose up -d
