@@ -30,7 +30,7 @@ COPY ./bucket/certs/nr.crt nr.crt
 
 # Copy keys for ssh access to selinux machine.
 COPY ./selinux/_vagrant/keys ../selinux/_vagrant/keys
-RUN chmod -R og-rwx ../selinux/_vagrant/keys
+RUN chmod -R og-rw ../selinux/_vagrant/keys/*
 
 # Install app dependencies
 COPY api/package*.json ./

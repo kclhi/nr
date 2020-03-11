@@ -5,9 +5,6 @@
 #
 version: '2'
 
-networks:
-  basic:
-
 services:
   ca.example.com:
     image: hyperledger/fabric-ca
@@ -22,8 +19,6 @@ services:
     volumes:
       - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.example.com
-    networks:
-      - basic
 
   orderer.example.com:
     container_name: orderer.example.com
@@ -43,8 +38,6 @@ services:
         - ./config/:/etc/hyperledger/configtx
         - ./crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
         - ./crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peerOrg1
-    networks:
-      - basic
 
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
@@ -95,8 +88,6 @@ services:
       - COUCHDB_PASSWORD=
     ports:
       - 5984:5984
-    networks:
-      - basic
 
   cli:
     container_name: cli
@@ -117,9 +108,12 @@ services:
         - /var/run/:/host/var/run/
         - ./../chaincode/:/opt/gopath/src/github.com/
         - ./crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
-    networks:
-        - basic
     #depends_on:
     #  - orderer.example.com
     #  - peer0.org1.example.com
     #  - couchdb
+
+networks:
+  default:
+    external:
+      name: net_basic

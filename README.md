@@ -115,8 +115,6 @@ Change into vagrant directory:
 cd selinux/_vagrant
 ```
 
-Add relevant bridge details into selinux/\_vagrant/Vagrantfile.
-
 Startup Vagrant machine:
 
 ```
@@ -134,7 +132,7 @@ sudo setsebool secure_mode_policyload on
 sudo setenforce 1
 ```
 
-Note IP address of specified bridge:
+Note IP address of main interface:
 
 ```
 ifconfig

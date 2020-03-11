@@ -14,7 +14,7 @@ router.post('/add', function(req, res, next) {
   const { spawn } = require('child_process');
 
   // Add IP address of vagrant machine.
-  var ssh = spawn( 'ssh', ['-i', '../selinux/_vagrant/keys/vagrant', '-p', '22', 'vagrant@192.168.1.136', 'echo "' + JSON.stringify(req.body) + '" >> /home/vagrant/store/tokens']);
+  var ssh = spawn( 'ssh', ['-i', '../selinux/_vagrant/keys/vagrant', '-p', '22', 'vagrant@172.28.128.3', 'echo "' + JSON.stringify(req.body) + '" >> /home/vagrant/store/tokens']);
 
   ssh.stdout.on('data', (data) => {
 
