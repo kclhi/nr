@@ -18,7 +18,7 @@
     "fabric-ca-client": "^1.4.4",
     "fabric-network": "^1.4.4",
     "http-errors": "~1.6.2",
-    "jsrsasign": "^8.0.12",
+    "jsrsasign": "^10.5.25",
     "minio": "^7.0.12",
     "morgan": "~1.9.0",
     "nodemon": "^1.19.4",
