@@ -1,12 +1,12 @@
 repo_name: kclhi/nr
-report_id: c080d2d92b2c6fa5cf9a2e94c350e066
+report_id: eb15ed64e7a9fb7eff2babcf4fd3862a
 version: 0.1
 repo_type: Public
-timestamp: '2024-02-11T18:35:58+00:00'
+timestamp: '2024-06-08T23:18:02+00:00'
 requested_by: martinchapman
 provider: github
 branch: master
-detected_tools_count: 20
+detected_tools_count: 21
 tools:
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -155,6 +155,19 @@ tools:
   detection_source: bucket/docker-compose.yml
   last_updated_by: Martin Chapman
   last_updated_on: 2019-10-22 19:05:02.000000000 Z
+- name: iDoneThis
+  description: Easy daily check-ins and powerful progress reports to run more effective
+    and productive teams
+  website_url: https://idonethis.com/
+  open_source: false
+  hosted_saas: true
+  category: Collaboration
+  sub_category: Team Task Management
+  image_url: https://img.stackshare.io/service/338/default_f863a3d7f927a74d6ae21e8e152265bd07ca6cfe.png
+  detection_source_url: https://github.com/kclhi/nr/blob/master/chain/basic-network/docker-compose.yml
+  detection_source: chain/basic-network/docker-compose.yml
+  last_updated_by: Martin Chapman
+  last_updated_on: 2019-10-11 14:28:16.000000000 Z
 - name: Shell
   description: A shell is a text-based terminal, used for manipulating programs and
     files. Shell scripts typically manage program execution.
@@ -166,20 +179,6 @@ tools:
   image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
   detection_source_url: https://github.com/kclhi/nr
   detection_source: Repo Metadata
-- name: cookie-parser
-  description: Parse HTTP request cookies
-  package_url: https://www.npmjs.com/cookie-parser
-  version: 1.4.5
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16136/default_def3edb85d7fbd20200a5cd7d0a1679e31bc8b3d.png
-  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
-  detection_source: api/package.json
-  last_updated_by: Martin Chapman
-  last_updated_on: 2019-10-16 17:26:21.000000000 Z
 - name: crypto-js
   description: JavaScript library of crypto standards
   package_url: https://www.npmjs.com/crypto-js
@@ -202,62 +201,6 @@ tools:
     detected_date: Oct 26
     severity: critical
     first_patched: 4.2.0
-- name: debug
-  description: Small debugging utility
-  package_url: https://www.npmjs.com/debug
-  version: 3.2.6
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15852/default_a2f722724df977d0f7752839e5d8845ab41f69d5.png
-  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
-  detection_source: api/package.json
-  last_updated_by: Martin Chapman
-  last_updated_on: 2019-10-16 17:26:21.000000000 Z
-  vulnerabilities:
-  - name: Regular Expression Denial of Service in debug
-    cve_id: CVE-2017-16137
-    cve_url: https://github.com/advisories/GHSA-gxpj-cx7g-858c
-    detected_date: Aug 22
-    severity: moderate
-    first_patched: 3.2.7
-- name: express
-  description: Fast, unopinionated, minimalist web framework
-  package_url: https://www.npmjs.com/express
-  version: 4.16.4
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
-  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
-  detection_source: api/package.json
-  last_updated_by: Martin Chapman
-  last_updated_on: 2019-10-16 17:26:21.000000000 Z
-  vulnerabilities:
-  - name: qs vulnerable to Prototype Pollution
-    cve_id: CVE-2022-24999
-    cve_url: https://github.com/advisories/GHSA-hrpp-h998-j3pp
-    detected_date: Dec 7
-    severity: high
-    first_patched: 4.17.3
-- name: http-errors
-  description: Create HTTP error objects
-  package_url: https://www.npmjs.com/http-errors
-  version: 1.6.3
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16925/default_7b9968788548874538c601457e8dcd9c74bd2051.png
-  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
-  detection_source: api/package.json
-  last_updated_by: Martin Chapman
-  last_updated_on: 2019-10-16 17:26:21.000000000 Z
 - name: jsrsasign
   description: Opensource free pure JavaScript cryptographic library supports RSA/RSAPSS/ECDSA/DSA
     signing/validation
@@ -312,17 +255,93 @@ tools:
     severity: high
     first_patched: 10.5.25
   - name: ECDSA signature vulnerability of Minerva timing attack in jsrsasign
-    cve_id: 
+    cve_id:
     cve_url: https://github.com/advisories/GHSA-g753-jx37-7xwh
     detected_date: Aug 22
     severity: moderate
     first_patched: 8.0.13
   - name: Signatures are mistakenly recognized to be valid in jsrsasign
-    cve_id: 
+    cve_id:
     cve_url: https://github.com/advisories/GHSA-h87q-g2wp-47pj
     detected_date: Feb 10
     severity: moderate
     first_patched: 10.2.0
+- name: express
+  description: Fast, unopinionated, minimalist web framework
+  package_url: https://www.npmjs.com/express
+  version: 4.16.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
+  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
+  detection_source: api/package.json
+  last_updated_by: Martin Chapman
+  last_updated_on: 2019-10-16 17:26:21.000000000 Z
+  vulnerabilities:
+  - name: qs vulnerable to Prototype Pollution
+    cve_id: CVE-2022-24999
+    cve_url: https://github.com/advisories/GHSA-hrpp-h998-j3pp
+    detected_date: Dec 7
+    severity: high
+    first_patched: 4.17.3
+  - name: Express.js Open Redirect in malformed URLs
+    cve_id: CVE-2024-29041
+    cve_url: https://github.com/advisories/GHSA-rv95-896h-c2vc
+    detected_date: Mar 26
+    severity: moderate
+    first_patched: 4.19.2
+- name: debug
+  description: Small debugging utility
+  package_url: https://www.npmjs.com/debug
+  version: 3.2.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15852/default_a2f722724df977d0f7752839e5d8845ab41f69d5.png
+  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
+  detection_source: api/package.json
+  last_updated_by: Martin Chapman
+  last_updated_on: 2019-10-16 17:26:21.000000000 Z
+  vulnerabilities:
+  - name: Regular Expression Denial of Service in debug
+    cve_id: CVE-2017-16137
+    cve_url: https://github.com/advisories/GHSA-gxpj-cx7g-858c
+    detected_date: Aug 22
+    severity: low
+    first_patched: 3.2.7
+- name: cookie-parser
+  description: Parse HTTP request cookies
+  package_url: https://www.npmjs.com/cookie-parser
+  version: 1.4.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16136/default_def3edb85d7fbd20200a5cd7d0a1679e31bc8b3d.png
+  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
+  detection_source: api/package.json
+  last_updated_by: Martin Chapman
+  last_updated_on: 2019-10-16 17:26:21.000000000 Z
+- name: http-errors
+  description: Create HTTP error objects
+  package_url: https://www.npmjs.com/http-errors
+  version: 1.6.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16925/default_7b9968788548874538c601457e8dcd9c74bd2051.png
+  detection_source_url: https://github.com/kclhi/nr/blob/master/api/package-lock.json
+  detection_source: api/package.json
+  last_updated_by: Martin Chapman
+  last_updated_on: 2019-10-16 17:26:21.000000000 Z
 - name: morgan
   description: HTTP request logger middleware for node.js
   package_url: https://www.npmjs.com/morgan
